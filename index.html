@@ -1,0 +1,131 @@
+</html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head><meta http-equiv="refresh" content="1000"></head>
+  <title>鲸鱼学堂实时概览</title>
+  <link href="/css/map1.css" rel="stylesheet" data-cache="1" type="text/css">
+
+</head>
+<body>
+  <div class="container-map">
+    <div class="header">
+      <div class="title">
+        <div class="bg">
+          <div class="text">鲸鱼学堂实时概览</div>
+          <div class="time" id="time"></div>
+        </div>
+      </div>
+    </div>
+    <div class="earth-wrap" id="earth"></div>
+    <div class="light"></div>
+    <div class="video-container">
+      <div id="teacher-video"></div>
+      <div class="room-info">
+          <span class="room-id"></span>
+          <span class="country"></span>
+      </div>
+      <div class="abnormal">暂无授课中的教师</div>
+      <i class="icon-line icon-line-l-t"></i>
+      <i class="icon-line icon-line-r-t"></i>
+      <i class="icon-line icon-line-l-b"></i>
+      <i class="icon-line icon-line-r-b"></i>
+    </div>
+    <div class="content">
+      <div class="left-wrap">
+        <div class="item" style="margin-top: 0;">
+          <div class="sub-title" style="margin-bottom: -30px;">实时规模</div>
+          <div class="item-con" style="margin-bottom: -40px;">
+            <div class="l">
+              <div class="text">当前班级数</div>
+              <div class="user-num cur-online-rooms"></div>
+            </div>
+            <div class="r" id="chart-line1" style="width: 300px;height: 180px;"></div>
+          </div>
+          <div class="item-con">
+            <div class="l">
+              <div class="text">当前用户数</div>
+              <div class="user-num cur-online-users"></div>
+            </div>
+            <div class="r" id="chart-line2" style="width: 300px;height: 180px;"></div>
+          </div>
+          <i class="icon-line icon-line-l-b"></i>
+          <i class="icon-line icon-line-r-b" style="right: 20px;"></i>
+        </div>
+        <div class="item" style="margin-top: 0;">
+          <div class="sub-title sub-title-quality">实时质量</div>
+          <div class="item-con">
+            <div class="pie" id="pie1" style="margin-right: 25px;"></div>
+            <div class="pie" id="pie2" style="margin-right: 25px;"></div>
+            <div class="pie" id="pie3" style="margin-right: 25px;"></div>
+            <div class="pie" id="pie4" style="margin-right: 25px;"></div>
+          </div>
+        </div>
+        <div class="item">
+          <i class="icon-line icon-line-l-t" style="right: 20px;"></i>
+          <i class="icon-line icon-line-r-t"></i>
+          <div class="sub-title">异常诊断</div>
+          <!-- <div class="error-wrap">
+            <ul id="error-diagnosis">
+              <li class="error-list">
+                <i class="icon-error"></i>在频道694146，<span class="space"><span class="h-light">1</span>人受</span>主播 600001115的影响，主播<span class="h-light"> 视频上行网络丢包</span>
+              </li>
+              <li class="error-list">
+                <i class="icon-error"></i>在频道694146，<span class="space"><span class="h-light">1</span>人受</span>主播 600001115的影响，主播<span class="h-light"> 视频上行网络抖动</span>
+              </li>
+              <li class="error-list">
+                <i class="icon-error"></i>在频道694146，<span class="space"><span class="h-light">1</span>人受</span>主播 600001115的影响，主播<span class="h-light"> 视频上行网络抖动</span>
+              </li>
+              <li class="error-list">
+                <i class="icon-error"></i>在频道694146，<span class="space"><span class="h-light">1</span>人受</span>主播 600001115的影响，主播<span class="h-light"> 视频上行网络抖动</span>
+              </li>
+            </ul>
+          </div> -->
+        </div>
+      </div>
+      
+      <div class="right-wrap">
+        <div class="num-wrap">
+          <div class="item-num">
+            <p class="sub-title" style="margin-bottom: 0px">今日班级数</p>
+            <div class="user-num today-rooms-num"></div>
+          </div>
+          <div class="item-num">
+            <p class="sub-title" style="margin-bottom: 0px">总服务人次</p>
+            <div class="user-num servcie-num"></div>
+          </div>
+        </div>
+        <div class="sub-title sub-title-user" style="margin-bottom: 0px">实时地域分布</div>
+        <div class="item-con" id="user-ranging" style="width: 400px;height: 300px;margin-bottom: -30px;"></div>
+        <div class="sub-title">上课时段</div>
+        <div class="class-time-wrap">
+          <i class="icon-line icon-line-l-t"></i>
+          <i class="icon-line icon-line-r-t"></i>
+          <i class="icon-line icon-line-l-b"></i>
+          <i class="icon-line icon-line-r-b"></i>
+          <div class="t-head">
+            <ul class="t-head-wrap">
+              <li>开始时间</li>
+              <li>结束时间</li>
+              <li>班级数量</li>
+            </ul>
+          </div>
+          <div class="t-body">
+            <ul id="class-time"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<script src='/libs/jquery.js'></script>
+<script src='/js/map/libs/echarts/echarts.min.js'></script>
+<script src='/js/map/libs/echarts/echarts-gl.min.js'></script>
+<script src='/js/map/libs/echarts/world.js'></script>
+<script src='./libs/data.js'></script>
+<script src="./libs/seamscroll.min.js"></script>
+<script src='/libs/echartsData.js' data-cache="1"></script>
+<script src='/libs/earth.js'></script>
+<script src='/libs/version.js'></script>
+</html> 
